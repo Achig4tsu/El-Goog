@@ -1,3 +1,8 @@
+console.log("file div-add.js loaded")
+
+
+
+
 function addDiv() {
     // Récupère la valeur de l'input
     var inputValue = document.getElementById("inputLetter").value;
@@ -20,3 +25,5 @@ function addDiv() {
     // Ajoute la nouvelle div à la div de sortie
     outputDiv.appendChild(newDiv);
 }
+
+
