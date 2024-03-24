@@ -1,3 +1,6 @@
+#! ../.venv/Scripts python3
+
+
 """
 
 Module de requêtes.
@@ -8,10 +11,3 @@ Fait par : - SILVA Florian
 Version : 1.0
 
 """
-
-import requests, time
-
-class Req :
-    
-    def __init__(self, url:str , id:int) -> None:
-        
