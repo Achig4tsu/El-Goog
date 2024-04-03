@@ -2,44 +2,50 @@ from rake_nltk import Rake
 from nltk.corpus import stopwords
 
 class KeyWord:
-    def __init__(self, h1, p, count, mot_useless ) -> None:
-        self.h1 = h1 
-        self.p = p 
-        self.count = count 
-        self.mot_useless = mot_useless
-        self.val_h1 = 5
-        self.val_p = 1 
+    def __init__(self,
+                 title : str = "",
+                 h1 : str = "",
+                 description : str = "",
+                 p : str = "",
+                 balises : str = ""
+                 ) -> None:
         
-    def extract_keywords(self, text):
-        rake = Rake(stopwords=stopwords.words('french'), max_length = 6)
+        self.__title = title
+        self.__h1 = h1 
+        self.__description = description
+        self.__p = p
+        self.__balises = balises
+        
+        self.__var = 6
+    
+    def __extract_keywords(self, text):
+        rake = Rake(stopwords=stopwords.words("french"), max_length=self.__var)
         rake.extract_keywords_from_text(text)
         return rake.get_word_degrees().keys()
     
-    def h1_keywords(self):
-        return list(set(self.extract_keywords(self.h1)))
-    
-    def __p_keywords(self):
-        return list(set(self.extract_keywords(self.p)))
-    
-    def calcul_words(self):
-        fin = {}
-        h1 = self.__h1_keywords()
-        p = self.__p_keywords()
-        liste_e = set(self.__h1_keywords().append(self.__p_keywords()))
-        for i in liste_e :
-            
-            if i in h1 :
-                fin [i] = 5*()
-            
-        
-        
-"""
-# Exemple d'utilisation
-h1 = "Coucou Coucou"
-p = "Le contenu de votre page avec plusieurs phrases."
-count = 10  # Nombre de mots clés à extraire
-mot_useless = []  # Liste de mots à exclure
+    def __setup (self) -> None :
+        self.__title = list(set(self.__extract_keywords(self.__title)))   
+        self.__h1 = list(set(self.__extract_keywords(self.__h1)))
+        self.__description= list(set(self.__extract_keywords(self.__description)))
+        self.__p = list(set(self.__extract_keywords(self.__p)))
+        self.__balises = list(set(self.__extract_keywords(self.__balises)))
 
-keyword_extractor = KeyWord(h1, p, count, mot_useless)
-print (f"resultat = {keyword_extractor.h1_keywords()}")
-"""
+    def get_all_keywords(self) -> dict :
+        """
+        Méthode GET qui renvoi les mots clé de chaques élément 
+        d'une page web et ce séparèment.
+        
+        Return  :
+            (dict) : Dictionnaire des mots clés 
+        
+        """        
+        self.__setup()
+        return {
+            "title" : self.__title,
+            "h1" : self.__h1,
+            "description" : self.__description,
+            "p" : self.__p,
+            "balises" : self.__balises            
+        }
+
+            

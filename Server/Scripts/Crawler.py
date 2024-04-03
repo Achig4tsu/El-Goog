@@ -18,32 +18,65 @@ import requests
 import time
 
 class Crawler:
-    def __init__(self):
-        self.File = []
-        self.Down = []
-        self.Urls = {}
+    def __init__(self, backup=None):
         
-    def crawl(self, url):
-        start_time = time.time()  # Mesure le temps au début de la requête
+        self.urls_attente = []
+        self.urls_down = []
+        self.urls_check = {}
         
-        try:
-            response = requests.get(url)
-            content = response.content
+        if backup is not None :
+            backup_file = open(backup,"a")
+        
+        
+        
+    def crawl(self, url:str="Wikipedia.org") -> None:
+        """
+        
+        Méthode d'initialisation du crawler.
+        
+        
+        Args :
+            url (str) : Le premier url à analiser
             
-            # Traitement :
+        Return :
+            None.
             
-            traitement = Trieur(content)
-            print(traitement.tri()[1])
+        """
+        assert isinstance (url, str), "L'url doit être un str"
+        
+        
+        # Premier url en attente
+        self.urls_attente.append(url)
+        
+        while not len(self.urls_attente) :
             
+            start_time = time.time() 
             
-            
-            
-            end_time = time.time()  # Mesure le temps à la fin de la requête
-            execution_time = end_time - start_time  # Calcule le temps d'exécution de la requête
-            print(f"Temps d'exécution de la requête pour {url}: {execution_time} secondes")
-            
-        except ConnectionError as e:
-            print(f"Erreur de connexion pour {url}: {e}")
+            try :
+                req = requests.get(url)
+                content = req.content
+                
+                traitement = Trieur(content=content)
+                
+                
+                url = self.urls_attente[1:][0]
+                
+                end_time = time.time() 
+                execution_time = end_time - start_time 
+                print(f"Temps d'exécution de la requête pour {url}: {execution_time} secondes")
+                    
+            except ConnectionError as e :
+                print (f"Erreur de connexion sur {url}")
+                self.urls_down.append(url)
+                url = self.urls_attente[1:][0]
+        
+
+    def crawl_from_list(self, list):
+        
+
+
+
+
 
 # Exemple d'utilisation
 crawler = Crawler()
