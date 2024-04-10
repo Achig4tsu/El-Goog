@@ -45,10 +45,11 @@ class Find :
     
     
     def FindDes(self):
-        return self.soup.find('meta', attrs={'name' : 'description'})['content']
+        return self.soup.find('meta', attrs={'name' : 'description'})
     
     def Findhref(self):
-        '''
+
+'''
         Recherche tout les href d'une page HTML
 
         Retourne :
@@ -66,6 +67,3 @@ class Find :
         '''
         return [self.FindTitle() , self.FindH1() , self.FindP() , self.FindDes()]
     
-req = requests.get('https://rassemblementnational.fr/', allow_redirects=True)
-content = req.content
-a = Find(content)
