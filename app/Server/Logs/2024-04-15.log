@@ -1,0 +1,5 @@
+INFO:__main__:----------[Logs du 2024-04-15, 00:25:37]----------
+INFO:__main__:Initialisation du crawler.
+INFO:__main__:Traitement de : https://www.figma.com/fr/
+INFO:__main__:Temps d'execution de la requete pour https://www.figma.com/fr/: 1.3388738632202148 secondes
+INFO:__main__:Finished

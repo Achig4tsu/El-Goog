@@ -1,0 +1,16 @@
+{
+    "server":{
+        "port" : 1234,
+        "host" : "localhost"
+    },
+
+
+    "crawler" :{
+        "nb_crawler" : 1,
+        "max_urls" : 10,
+        "load_text" : "True"
+    },
+    
+    "database" : {}
+    
+}
