@@ -14,7 +14,8 @@ from requests.exceptions import ConnectionError
 class Req():
     
     def __init__(self, url:str):
-        pass
+        assert isinstance (url, str)
+        
     
     def get(self):
         pass

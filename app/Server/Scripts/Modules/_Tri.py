@@ -1,6 +1,7 @@
 from Modules._Keywords import KeyWord
 from Modules._Finder import Find
 from Modules._Cleaner import Cleaner
+from Modules._Grouper import Grouper
 
 """
 Module permettant de centraliser le tri des information d'une page
@@ -42,6 +43,7 @@ class Trieur :
         self.__description = ""
         self.__links = []
         self.__keywords = []
+        self.__group = ""
         self.__banned = False
         
         

@@ -13,6 +13,11 @@ from Modules._Tri import Trieur
 from Modules._Requests import *
 
 
+import warnings
+
+# Ignorer l'avertissement spécifique concernant les URL dans Beautiful Soup
+warnings.simplefilter("ignore")
+
 class Crawler:
     def __init__(self,
                  url_max:int = 10):
@@ -113,7 +118,7 @@ if __name__ == "__main__" :
     # Initialisation du Crawler.
     crawler = Crawler()
     first_url = "https://wikipedia.fr"
-    crawler.crawl(first_url, './backup.txt')
+    crawler.crawl(first_url, './app/Server/Backup/backup.txt')
     
     """
     # Fin du log.

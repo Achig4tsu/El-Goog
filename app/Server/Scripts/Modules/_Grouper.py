@@ -10,10 +10,4 @@ class Grouper:
         return ""
 
 if __name__ == '__main__':
-    print("Hello World")
-    
-    t = Grouper("https://www.example.com")
-    print(t.get_group())
-
-    t2 = Grouper("www.subdomain.example.uk")
-    print(t2.get_group())
+    pass
