@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  backend:
+    build: ./Server/Backend/
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - ./Backend:/app
+    networks:
+      - my_network
+
+  frontend:
+    build: ./Frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - my_network
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3333:3333"
+    environment:
+      MYSQL_ROOT_PASSWORD: Corpium8
+      MYSQL_DATABASE: El-Goog
+      MYSQL_USER: Florian
+      MYSQL_PASSWORD:
+    volumes:
+      - ./Server/Database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - my_network
+
+  crawler:
+    build: ./Server/Crawler/
+    volumes:
+      - ./Server/Crawler:/app
+    networks:
+      - my_network
+
+networks:
+  my_network:
