@@ -1,0 +1,41 @@
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:25:54]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:27:53]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:28:57]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:30:14]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:30:42]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:30:54]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:31:04]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:31:16]----------
+WARNING:Crawler.py:Preferences file "./preferences.json" not found. Using default preferences.
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:32:19]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:32:32]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:33:08]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:33:21]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:34:23]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:34:43]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:34:54]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:38:10]----------
+INFO:_Tri.py:Informations de http://www.rtalabel.org récupérée.
+INFO:_Tri.py:Informations de https://www.ivisa.com?utm_source=rtalabel&utm_medium=affiliate récupérée.
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:40:20]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:40:36]----------
+INFO:Crawler.py:Finished
+INFO:Crawler.py:----------[Logs du 2024-05-11, 18:43:40]----------
+INFO:Crawler.py:Finished
