@@ -1,0 +1,6 @@
+{
+    "url_max": 100,
+    "backup_file": "app/Server/Crawler/Backup/backup.txt",
+    "preferences_file": "./preferences.json",
+    "timeout": 5
+}
