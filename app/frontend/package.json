@@ -1,0 +1,19 @@
+{
+  "name": "el-goog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "generate-keys": "node generateKeys.js",
+    "add-user": "node addUser.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "mariadb": "^2.5.5",
+    "sequelize": "^6.6.2"
+  }
+}

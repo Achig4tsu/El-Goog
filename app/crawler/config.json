@@ -1,0 +1,11 @@
+{
+    "database": {
+        "host": "mariadb",
+        "user": "elgooguser",
+        "password": "elgoogpassword",
+        "database": "elgoog"
+    },
+    "url_max": 50000,
+    "backup_file": "/app/Backup/backup.txt",
+    "timeout": 5
+}

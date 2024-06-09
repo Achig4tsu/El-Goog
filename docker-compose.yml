@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+    ports:
+      - "3306:3306"
+
+  backend:
+    build: ./app/backend
+    depends_on:
+      - mariadb
+    command: ["sh", "-c", "/usr/local/bin/wait-for-it.sh mariadb:3306 -- python my_backend_app.py"]
+
+  crawler:
+    build: ./app/crawler
+    depends_on:
+      - mariadb
+    command: ["sh", "-c", "/usr/local/bin/wait-for-it.sh mariadb:3306 -- python my_crawler_app.py"]
+
+  frontend:
+    image: httpd:latest
+    volumes:
+      - ./app/frontend:/usr/local/apache2/htdocs/
+    ports:
+      - "80:80"

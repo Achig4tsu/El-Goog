@@ -2,10 +2,10 @@
 
 ## Supported Versions
 
-Encore aucune versions utilisables.
+Première version utilisable.
 
 | Version | Supported          |
-| ------- | ------------------ |
+| 1.0     | Beta               |
 
 ## Reporting a Vulnerability
 
