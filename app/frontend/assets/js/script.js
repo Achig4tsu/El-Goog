@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.success) {
                 showSuccessAnimation();
                 setTimeout(() => {
-                    window.location.href = 'newpage.html';  // Remplacez par l'URL de votre nouvelle page
+                    window.location.href = 'adminpanel.html';  // Remplacez par l'URL de votre nouvelle page
                 }, 2000);
             } else {
                 alert('Erreur de connexion');

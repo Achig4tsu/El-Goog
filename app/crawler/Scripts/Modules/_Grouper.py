@@ -1,3 +1,5 @@
+from urllib.parse import urlparse
+
 class Grouper:
     def __init__(self, url):
         assert isinstance(url, str)

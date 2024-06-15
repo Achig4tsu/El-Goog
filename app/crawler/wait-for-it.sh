@@ -1,10 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+#   Use this script to test if a given TCP host/port are available
 
-host="$1"
+# wait-for-it.sh mariadb:3306 -- /usr/src/app/venv/bin/python /usr/src/app/main.py
+
+set -e
+
+host="mariadb"
 shift
+port="3306"
+shift
+
 cmd="$@"
 
-until mysql -h "$host" -u "root" -p"password" -e "select 1" > /dev/null 2>&1; do
+until nc -z "$host" "$port"; do
   >&2 echo "MariaDB is unavailable - sleeping"
   sleep 1
 done

@@ -29,8 +29,8 @@ def search():
     query = request.json.get('query', '')
     conn = MC.connect(
         host="mariadb",
-        user="root",
-        password="",
+        user="backenduser",
+        password="backendpassword",
         database="elgoog"
     )
     cursor = conn.cursor()

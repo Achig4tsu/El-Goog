@@ -12,7 +12,7 @@ class MySQLDatabase:
         )
         self.db_logger = logging.getLogger("DatabaseLogger")
         self.db_logger.setLevel(logging.INFO)
-        handler = logging.FileHandler('/app/Logs/DB/mysql_database.log')
+        handler = logging.FileHandler('../app/Logs/DB/mysql_database.log')
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         handler.setFormatter(formatter)
         self.db_logger.addHandler(handler)
@@ -32,11 +32,11 @@ class MySQLDatabase:
             self.db_logger.error(f"Error fetching URL info: {e}")
             return None
 
-    def insert_url_info(self, url, title, description):
+    def insert_url_info(self, url, title, description, banned=False):
         try:
             cursor = self.connection.cursor()
-            query = "INSERT INTO urls (url, title, description) VALUES (%s, %s, %s)"
-            cursor.execute(query, (url, title, description))
+            query = "INSERT INTO urls (url, title, description, banned) VALUES (%s, %s, %s, %s)"
+            cursor.execute(query, (url, title, description, banned))
             self.connection.commit()
             cursor.close()
         except MC.Error as e:
@@ -80,17 +80,15 @@ class MySQLDatabase:
         except MC.Error as e:
             self.db_logger.error(f"Error adding URL to group: {e}")
 
-    def add_keyword_to_table(self, keyword):
+    def add_keyword_to_table(self, keyword, url_id):
         try:
             table_name = f"mot_{keyword[0].lower()}"
             cursor = self.connection.cursor()
             query = f"CREATE TABLE IF NOT EXISTS {table_name} (mot VARCHAR(100) PRIMARY KEY, id_urls JSON)"
             cursor.execute(query)
             self.connection.commit()
-            query = f"INSERT INTO {table_name} (mot, id_urls) VALUES (%s, JSON_ARRAY()) ON DUPLICATE KEY UPDATE mot = mot"
-            cursor.execute(query, (keyword,))
-            query = f"UPDATE {table_name} SET id_urls = JSON_ARRAY_APPEND(id_urls, '$', %s) WHERE mot = %s"
-            cursor.execute(query, (keyword, keyword))
+            query = f"INSERT INTO {table_name} (mot, id_urls) VALUES (%s, JSON_ARRAY(%s)) ON DUPLICATE KEY UPDATE id_urls = JSON_ARRAY_APPEND(id_urls, '$', %s)"
+            cursor.execute(query, (keyword, url_id, url_id))
             self.connection.commit()
             cursor.close()
         except MC.Error as e:

@@ -1,8 +1,8 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
-const authRoutes = require('./routes/auth');
-const { sequelize } = require('./config/db');
+const authRoutes = require('.//routes/auth');
+const { sequelize } = require('.//config/db');
 const dotenv = require('dotenv');
 
 dotenv.config();
@@ -12,7 +12,7 @@ const app = express();
 // Middlewares
 app.use(helmet());
 app.use(cors({
-    origin: 'http://127.0.0.1:5500',
+    origin: 'http://mariadb:3306',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

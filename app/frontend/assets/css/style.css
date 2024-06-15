@@ -48,20 +48,25 @@ body {
 .search-bar input {
     width: 450px;
     height: 4vh;
-    border: 2px solid #888888;
-    border-radius: 1vh;
+    border: 2px solid #D9D9D9;
+    border-radius: 2vh;
     overflow: hidden;
     color: black;
-    background-color: rgb(180, 193, 197);
+    background-color: #D9D9D9;
     justify-content: center;
     font-size: medium;
     text-indent: 2%;
-    transition: all 0.3s ease;
+    transition: all 0.6s ease;
+}
+
+.search-bar :hover{
+    background-color: #a5a5a5;
+    border: 1px solid #a5a5a5;
 }
 
 .search-bar input:focus {
     border-color: #333333;
-    background-color: #ffffff;
+    background-color: #a1a1a1;
 }
 
 .footer-buttons {
@@ -105,19 +110,37 @@ body {
 
 .settings-icon {
     position: fixed;
+    display: flex;
     top: 2%;
     right: 2%;
     cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    transition: background-color 0.6s ease-out;
+}
+
+.settings-icon:hover{
+    background-color: #7a7878;
+    border-radius: 50%;
+    transition: background-color 0.6s ease-in,  transform 0.3s ease-out;
 }
 
 .settings-menu {
     position: fixed;
-    top: 10%;
+    width: 200px;
+    height: 50px;
+    font-size: 1em;
+    top: 8%;
     right: 2%;
     background-color: white;
     border: 1px solid #888888;
+    border-radius: 20px;
     padding: 10px;
     display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
@@ -145,6 +168,14 @@ body {
     height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.5);
+
+}
+
+.login-content h2{
+    text-align: center;
+    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 100px;
 }
 
 .login-content {
@@ -152,11 +183,29 @@ body {
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 30%;
+    width: 40%;
+    height: 50%;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     animation: showLogin 0.3s forwards;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
 }
+
+.login-content input{
+    margin-bottom: 40px;
+    border-radius: 20px;
+    transition: all 0.1s ease-out;
+}
+.login-content input:hover{
+    background-color: #d1d1d1;
+    transition: all 0.1s ease-in;
+
+
+}
+
+
 
 @keyframes showLogin {
     from { transform: scale(0.7); opacity: 0; }

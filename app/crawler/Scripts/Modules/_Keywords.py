@@ -117,7 +117,3 @@ class KeyWord:
                 if keyword not in raw_keywords:
                     raw_keywords.append(keyword)
         return raw_keywords
-
-
-if __name__ == "__main__":
-    pass

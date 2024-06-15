@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="./assets/css/admin-style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1><a href="index.html">EL-GOOG</a></h1>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1>DASHBOARD</h1>
+                <div class="search-login">
+                    <input type="text" placeholder="Nouvelle recherche...">
+                    <span class="login-as">Login as: <span id="user-name">--</span></span>
+                </div>
+            </header>
+            <div class="cards">
+                <div class="card" id="server-temperature">
+                    <h2>Server Temperature</h2>
+                    <p id="temperature-value">10</p>
+                </div>
+                <div class="card" id="number-of-crawlers">
+                    <h2>Nombre De Crawler</h2>
+                    <p id="crawlers-value">--</p>
+                </div>
+                <div class="card" id="network-speed">
+                    <h2>Débit Réseau</h2>
+                    <p id="speed-value">--</p>
+                </div>
+                <div class="card" id="site-downs">
+                    <h2>Nombre Site Downs</h2>
+                    <p id="site-downs-value">--</p>
+                </div>
+            </div>
+            <div class="crawler-info">
+                <h2>Crawler Informations</h2>
+                <canvas id="crawlerChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./assets/js/admin-script.js"></script>
+</body>
+</html>

@@ -1,3 +1,5 @@
 ./app/env/
 ./app/venv/
 ./app/Server/env
+.env
+./mariadb/.env

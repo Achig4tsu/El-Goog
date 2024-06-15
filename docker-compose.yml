@@ -4,26 +4,71 @@ services:
   mariadb:
     image: mariadb:latest
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - elgoog-network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
-      - "3306:3306"
+      - "${PMA_PORT}:80"
+    networks:
+      - elgoog-network
 
   backend:
     build: ./app/backend
     depends_on:
       - mariadb
-    command: ["sh", "-c", "/usr/local/bin/wait-for-it.sh mariadb:3306 -- python my_backend_app.py"]
+    environment:
+      DB_HOST: mariadb
+      DB_USER: ${BACKEND_DB_USER}
+      DB_PASSWORD: ${BACKEND_DB_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - ./app/backend:/usr/src/app
+    networks:
+      - elgoog-network
+    ports:
+      - "5000:5000"
 
   crawler:
     build: ./app/crawler
     depends_on:
       - mariadb
-    command: ["sh", "-c", "/usr/local/bin/wait-for-it.sh mariadb:3306 -- python my_crawler_app.py"]
+    environment:
+      DB_HOST: mariadb
+      DB_USER: ${CRAWLER_DB_USER}
+      DB_PASSWORD: ${CRAWLER_DB_PASSWORD}
+      DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - ./app/crawler:/usr/src/app
+    networks:
+      - elgoog-network
 
   frontend:
-    image: httpd:latest
+    build: ./app/frontend
+    depends_on:
+      - backend
+      - mariadb
+    environment:
+      REACT_APP_BACKEND_URL: http://backend:5000
     volumes:
-      - ./app/frontend:/usr/local/apache2/htdocs/
+      - ./app/frontend:/var/www/html
     ports:
-      - "80:80"
+      - "3000:80"
+    networks:
+      - elgoog-network
+
+networks:
+  elgoog-network:
+    driver: bridge
+
+volumes:
+  mariadb_data:
